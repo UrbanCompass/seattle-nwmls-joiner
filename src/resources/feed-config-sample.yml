@@ -1,0 +1,43 @@
+name: la_crmls
+
+tables:
+  - name: agents_tbl
+    primary_kay: uc_key
+  - name: history_tbl
+    primary_key: uc_key
+    foreign_references:
+      - entity: history
+        field_mapping: ResourceRecordKeyNumeric
+  - name: listings_tbl
+    primary_key: uc_key
+    foreign_references:
+      - entity: list_agents
+        field_mapping: ListAgentKeyNumeric
+      - entity: colist_agents
+        field_mapping: CoListAgentKeyNumeric
+      - entity: buyer_agents
+        field_mapping: BuyerAgentKeyNumeric
+      - entity: cobuyer_agents
+        field_mapping: CoBuyerAgentKeyNumeric
+      - entity: list_offices
+        field_mapping: ListOfficeKeyNumeric
+      - entity: colist_offices
+        field_mapping: CoListOfficeKeyNumeric
+      - entity: buyer_offices
+        field_mapping: BuyerOfficeKeyNumeric
+      - entity: cobuyer_offices
+        field_mapping: CoBuyerOfficeKeyNumeric
+  - name: media_tbl
+    primary_key: uc_key
+    foreign_references:
+      - entity: media
+        field_mapping: ResourceRecordKeyNumeric
+  - name: office_tbl
+    primary_key: uc_key
+  - name: open_house_tbl
+    primary_key: uc_key
+    foreign_references:
+      - entity: openhouses
+        field_mapping: ListingKeyNumeric
+
+
