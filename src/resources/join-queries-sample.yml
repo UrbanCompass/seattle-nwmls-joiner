@@ -1,0 +1,17 @@
+name: join_mls_tables
+desc: joining diffent MLS tables
+query: >
+  SELECT *
+  FROM listings_tbl l
+  LEFT JOIN agents_tbl aa ON l.list_agents = aa.uc_pk
+  LEFT JOIN agents_tbl ab ON l.buyer_agents = ab.uc_pk
+  LEFT JOIN agents_tbl ac ON l.colist_agents = ac.uc_pk
+  LEFT JOIN agents_tbl ad ON l.cobuyer_agents = ad.uc_pk
+  LEFT JOIN open_house_tbl oh ON l.uc_pk = oh.listing_key
+  LEFT JOIN office_tbl oa ON l.list_office_key = oa.uc_pk
+  LEFT JOIN office_tbl ob ON l.buyer_office_key = ob.uc_pk
+  LEFT JOIN office_tbl oc ON l.colist_office_key = oc.uc_pk
+  LEFT JOIN office_tbl od ON l.cobuyer_office_key = od.uc_pk
+  LEFT JOIN media_tbl m ON l.uc_pk = m.resource_record_key
+  LEFT JOIN history_tbl h ON l.uc_pk = h.resource_record_key
+

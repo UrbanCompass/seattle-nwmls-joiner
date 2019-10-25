@@ -1,0 +1,12 @@
+version: "2.2"
+services:
+  job-cluster:
+    image: ${FLINK_DOCKER_IMAGE_NAME:-flink-job}
+    ports:
+      - "8081:8081"
+    command: job-cluster --job-classname ${FLINK_JOB} -Djobmanager.rpc.address=job-cluster -Dparallelism.default=${DEFAULT_PARALLELISM:-1} ${SAVEPOINT_OPTIONS} ${FLINK_JOB_ARGUMENTS}
+
+  taskmanager:
+    image: ${FLINK_DOCKER_IMAGE_NAME:-flink-job}
+    command: task-manager -Djobmanager.rpc.address=job-cluster
+    scale: ${DEFAULT_PARALLELISM:-1}
