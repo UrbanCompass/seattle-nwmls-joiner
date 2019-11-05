@@ -3,7 +3,7 @@ ThisBuild / resolvers ++= Seq(
   Resolver.mavenLocal
 )
 
-name := "seattle-listing-infra-joiner"
+name := "seattle-listings-infra-joiner"
 
 version := "1.0"
 
@@ -30,7 +30,7 @@ lazy val root = (project in file(".")).
     libraryDependencies ++= flinkDependencies
   )
 
-assembly / mainClass := Some("com.urbancompass.data.pipeline.flink.CRMLSJoiner")
+assembly / mainClass := Some("com.uc.listings.infra.joiner.HelloWorld")
 
 // make run command include the provided dependencies
 Compile / run  := Defaults.runTask(Compile / fullClasspath,
